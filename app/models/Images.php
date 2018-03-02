@@ -12,4 +12,13 @@ class Images extends Model
     public $id;
     public $person_id;
     public $image;
+
+    public function initialize()
+    {
+        $this->hasOne(
+            "person_id",
+            "Persons",
+            "id"
+        );
+    }
 }

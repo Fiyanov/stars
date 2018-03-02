@@ -13,4 +13,13 @@ class Aliases extends Model
     public $id;
     public $person_id;
     public $alias;
+
+    public function initialize()
+    {
+        $this->hasOne(
+            "person_id",
+            "Persons",
+            "id"
+        );
+    }
 }

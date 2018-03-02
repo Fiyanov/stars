@@ -19,4 +19,25 @@ class Persons extends Model
     public $color_eye;
     public $color_hair;
     public $height;
+
+    public function initialize()
+    {
+        $this->hasMany(
+            "id",
+            "Aliases",
+            "person_id"
+        );
+
+        $this->hasMany(
+            "id",
+            "Images",
+            "person_id"
+        );
+
+        $this->hasMany(
+            "id",
+            "SocialPages",
+            "person_id"
+        );
+    }
 }

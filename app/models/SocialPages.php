@@ -12,4 +12,13 @@ class SocialPages extends Model
     public $id;
     public $person_id;
     public $url;
+
+    public function initialize()
+    {
+        $this->hasOne(
+            "person_id",
+            "Persons",
+            "id"
+        );
+    }
 }
