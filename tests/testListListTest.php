@@ -19,7 +19,7 @@ class ListTest extends \UnitTestCase
 
     public function testPersonCase()
     {
-        $result = (new StarService())->getPersona(1);
+        $result = (new StarService())->getPerson(1);
 
         $this->assertEquals(
             true,

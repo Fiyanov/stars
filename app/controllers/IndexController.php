@@ -12,6 +12,11 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        $this->view->test = (new StarService())->test();
+        $this->view->persons = (new StarService())->getList();
+    }
+
+    public function personAction($id)
+    {
+        $this->view->person = (new StarService())->getPerson($id);
     }
 }

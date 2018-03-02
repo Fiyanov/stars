@@ -8,13 +8,22 @@
 
 class StarService extends \Phalcon\DI\Injectable
 {
-    public function getList($filter = [])
+    public function getList($filter = [], $limit = 20)
     {
-        return [];
+        $result = [];
+        $persons = Persons::find(['limit' => $limit]);
+
+        foreach ($persons as $person) {
+            $result[] = [
+                'name' => $person->name
+            ];
+        }
+
+        return $result;
     }
 
-    public function getPersona($id)
+    public function getPerson($id)
     {
-        return [];
+        return false;
     }
 }
