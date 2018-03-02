@@ -29,7 +29,9 @@ try {
 
     $di->setShared('config', $config);
 
-    $di->set('db', function ($config) {
+    $di->set('db', function () {
+        $config = $this->getConfig();
+
         return new DbAdapter(array(
             "host" => $config->database->host,
             "username" => $config->database->username,
@@ -37,6 +39,12 @@ try {
             "dbname" => $config->database->dbname
         ));
     });
+
+//    $di->set('url', function(){
+//        $url = new \Phalcon\Mvc\Url();
+//        $url->setBaseUri('/public'); // http://myapp.dev
+//        return $url;
+//    });
 
     //Меняем роутер так чтобы он принимал параметр на индексный метод
     $di->set('router', function(){
@@ -62,6 +70,9 @@ try {
     });
 
     $application = new Application($di);
+
+    $application->assets->addCss("../vendor/twbs/bootstrap/dist/css/bootstrap.min.css", true);
+    $application->assets->addCss("../vendor/thomaspark/bootswatch/dist/darkly/bootstrap.min.css", true);
 
     echo $application->handle()->getContent();
 
