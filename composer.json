@@ -1,0 +1,8 @@
+{
+    "require": {
+        "phpunit/phpunit": "^6.5",
+        "phalcon/devtools": "^3.2",
+        "twbs/bootstrap": "^4.0",
+        "phalcon/incubator": "3.2"
+    }
+}
