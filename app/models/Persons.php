@@ -6,7 +6,9 @@
  * Time: 13:38
  */
 
-class Persons
+use Phalcon\Mvc\Model;
+
+class Persons extends Model
 {
     public $id;
     public $name;

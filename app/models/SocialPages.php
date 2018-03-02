@@ -5,8 +5,9 @@
  * Date: 02.03.2018
  * Time: 13:40
  */
+use Phalcon\Mvc\Model;
 
-class SocialPages
+class SocialPages extends Model
 {
     public $id;
     public $person_id;

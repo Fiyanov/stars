@@ -5,8 +5,9 @@
  * Date: 02.03.2018
  * Time: 13:36
  */
+use Phalcon\Mvc\Model;
 
-class Images
+class Images extends Model
 {
     public $id;
     public $person_id;
