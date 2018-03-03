@@ -40,12 +40,6 @@ try {
         ));
     });
 
-//    $di->set('url', function(){
-//        $url = new \Phalcon\Mvc\Url();
-//        $url->setBaseUri('/public'); // http://myapp.dev
-//        return $url;
-//    });
-
     //Меняем роутер так чтобы он принимал параметр на индексный метод
     $di->set('router', function(){
         $router = new \Phalcon\Mvc\Router();
@@ -73,6 +67,12 @@ try {
 
     $application->assets->addCss("../vendor/twbs/bootstrap/dist/css/bootstrap.min.css", true);
     $application->assets->addCss("../vendor/thomaspark/bootswatch/dist/darkly/bootstrap.min.css", true);
+    $application->assets->addCss("js/jquery-ui-1.12.1.custom/jquery-ui.min.css", true);
+    $application->assets->addCss("css/app.css", true);
+    $application->assets->addJs("https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js");
+    $application->assets->addJs("https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js");
+    $application->assets->addJs("js/jquery-ui-1.12.1.custom/jquery-ui.min.js", true);
+    $application->assets->addJs("js/app.js", true);
 
     echo $application->handle()->getContent();
 
