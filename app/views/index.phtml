@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title>Stars</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <?php $this->assets->outputCss(); ?>
+        <?php $this->assets->outputJs(); ?>
+    </head>
+    <body>
+        <div id="container" class="container">
+            <?php echo $this->getContent(); ?>
+        </div>
+    </body>
+    <script id="tmp_list" type="x-tmpl-mustache">
+        <div class="card">
+            <div class="card-header"><h2>Список звёзд</h2></div>
+            <div class="card-body">
+                <div>
+                    <input id="search" type="text" class="form-control mr-sm-2 dropdown ui-widget" placeholder="Поиск">
+                </div>
+                <hr>
+                <ul id="list">
+                    {{#persons}}
+                        <li class="item cursor-pointer" data-id="{{id}}">{{label}}</li>
+                    {{/persons}}
+                </ul>
+            </div>
+        </div>
+    </script>
+    <script id="tmp_person" type="x-tmpl-mustache">
+        <div class="card">
+            <div class="card-header"><h2>{{name}}</h2></div>
+            <div class="card-body">
+                <!--PHOTO SMALL-->
+                <div class="row d-block d-sm-none">
+                        {{#images}}
+                            <div class="col float-left images" style="background-image: url('/public/images/{{.}}')"></div>
+                        {{/images}}
+
+                        <div class="clearfix"></div>
+
+                        <hr>
+                </div>
+
+                <div class="row">
+                    <!--PHOTO BIG-->
+                    <div class="col d-none d-sm-block order-first">
+                        {{#images}}
+                            <div class="float-left images" style="background-image: url('/public/images/{{.}}')"></div>
+                        {{/images}}
+                    </div>
+                    <!--DESC-->
+                    <div class="col order-last">
+                        <h4>Описание:</h4>
+
+                        <table class="table table-striped">
+                            <tr>
+                                <td>Псевдонимы:</td>
+                                <td>{{#aliases}}{{.}}<hr>{{/aliases}}</td>
+                            </tr>
+                            <tr>
+                                <td>Дата рождения:</td>
+                                <td>{{birthday}}</td>
+                            </tr>
+                            <tr>
+                                <td>Место рождения:</td>
+                                <td>{{birthplace}}</td>
+                            </tr>
+                            <tr>
+                                <td>Страна:</td>
+                                <td>{{country}}</td>
+                            </tr>
+                            <tr>
+                                <td>Цвет глаз:</td>
+                                <td>{{color_eye}}</td>
+                            </tr>
+                            <tr>
+                                <td>Цвет волос:</td>
+                                <td>{{color_hair}}</td>
+                            </tr>
+                            <tr>
+                                <td>Рост:</td>
+                                <td>{{height}}</td>
+                            </tr>
+                            <tr>
+                                <td>Статус:</td>
+                                <td>{{#career_status}}действующий{{/career_status}}{{^career_status}}не выступает{{/career_status}}</td>
+                            </tr>
+                            {{#have_pages}}
+                            <tr>
+                                <td>Ссылки:</td>
+                                <td>
+                                {{#pages}}
+                                    <a href="{{.}}">{{.}}</a>
+                                {{/pages}}
+                                </td>
+                            </tr>
+                            {{/have_pages}}
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </script>
+</html>

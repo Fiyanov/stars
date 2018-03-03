@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-header"><h1>Список звёзд</h1></div>
+    <div class="card-body">
+        <div>
+            <input id="search" type="text" class="form-control mr-sm-2 dropdown ui-widget" placeholder="Поиск">
+        </div>
+        <hr>
+        <ul id="list">
+            <?php foreach ($persons as $person): ?>
+                <li class="item cursor-pointer" data-id="<?=$person['id']?>"><?=$person['label']?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
