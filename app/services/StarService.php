@@ -27,7 +27,9 @@ class StarService extends \Phalcon\DI\Injectable
 
         foreach ($persons as $person) {
             $result[] = [
-                'name' => $person->name
+                'id' => $person->id,
+                'label' => $person->name,
+                'value' => $person->id
             ];
         }
 
@@ -36,7 +38,34 @@ class StarService extends \Phalcon\DI\Injectable
 
     public function getPerson($id)
     {
-        return false;
+        $person = Persons::findFirst($id);
+
+        if (!$person) {
+            return false;
+        }
+
+        $result = $person->toArray();
+
+        $result['career_status'] = boolval($result['career_status']);
+
+        foreach ($person->Aliases as $alias) {
+            $result['aliases'][] = $alias->alias;
+        }
+
+        foreach ($person->Images as $image) {
+            $result['images'][] = $image->image;
+        }
+
+        $have_pages = false;
+
+        foreach ($person->SocialPages as $page) {
+            $have_pages = true;
+            $result['pages'][] = $page->url;
+        }
+
+        $result['have_pages'] = $have_pages;
+
+        return $result;
     }
 
     public function search($search)

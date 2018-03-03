@@ -17,11 +17,17 @@ class APIController extends Controller
 
     public function getActorAction($id)
     {
-        return $id;
+        return json_encode((new StarService())->getPerson($id));
     }
 
     public function getActorListAction()
     {
-        return [];
+        $search = null;
+
+        if ($this->request->isGet()) {
+            $search = $this->request->get('term');
+        }
+
+        return json_encode((new StarService())->search($search));
     }
 }
