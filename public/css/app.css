@@ -1,0 +1,13 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.images {
+    width:50%; height:50%;
+    background-position:center;
+    background-size:cover;
+}
+
+.item:hover {
+    color: #ffa91e;
+}
